@@ -15,7 +15,7 @@ current_time = datetime.datetime.now()
 formatted_time = current_time.strftime('%Y-%m-%d %H:%M:%S')
 app = Flask(__name__)
 CORS(app)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
+CORS(app, resources={r"/*": {"origins": ["https://recommendersystem.onrender.com:3000"]}})
 
 def calculate_distance(lat1, lng1, lat2, lng2):
     R = 6371  # radius of the Earth in km
@@ -158,5 +158,5 @@ def assign_group_endpoint():
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5020)
+    app.run(host='https://recommendersystem.onrender.com', port=5020)
 
