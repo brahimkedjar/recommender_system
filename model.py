@@ -15,7 +15,6 @@ current_time = datetime.datetime.now()
 formatted_time = current_time.strftime('%Y-%m-%d %H:%M:%S')
 app = Flask(__name__)
 CORS(app)
-CORS(app, resources={r"/*": {"origins": ["https://recommendersystem.onrender.com:3000"]}})
 
 def calculate_distance(lat1, lng1, lat2, lng2):
     R = 6371  # radius of the Earth in km
