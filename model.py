@@ -39,8 +39,8 @@ def assign_group(lat, lng, speciality, baladia,patient_id):
     from sklearn.cluster import KMeans
     from haversine import haversine
 
-    conn = psycopg2.connect(database="sihati", user="sihati_user",
-                            password="a6lysuWTgFc3dPl5Dl0IVDMcvVhq74Vh", host="dpg-ch767erhp8u9bo5brscg-a", port="5432")
+    conn = psycopg2.connect(database="sihati", user="sihati",
+                            password="Daddy22mars_", host="41.111.206.183", port="5432")
     c = conn.cursor()
 
     c.execute('SELECT latitude, longitude, group_id, speciality, baladia FROM groups')
