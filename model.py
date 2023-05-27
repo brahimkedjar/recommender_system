@@ -157,6 +157,6 @@ def assign_group_endpoint():
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5020)
+    app.run(host='0.0.0.0')
 
 
