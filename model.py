@@ -14,7 +14,7 @@ current_time = datetime.datetime.now()
 # Format current time as a string
 formatted_time = current_time.strftime('%Y-%m-%d %H:%M:%S')
 app = Flask(__name__)
-CORS(app, origins='*')
+CORS(app)
 
 def calculate_distance(lat1, lng1, lat2, lng2):
     R = 6371  # radius of the Earth in km
@@ -138,7 +138,6 @@ def assign_group(lat, lng, speciality, baladia,patient_id):
 
 
 @app.route('/assign_group', methods=['POST'])
-@cross_origin()
 
 def assign_group_endpoint():
     data = json.loads(request.data)
