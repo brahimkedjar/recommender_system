@@ -48,7 +48,7 @@ def assign_group(lat, lng, speciality, baladia,patient_id):
     if not existing_patients:
         c.execute('INSERT INTO groups (latitude, longitude, group_id, speciality, baladia,patient_id, created_at,updated_at) VALUES (%s,%s, %s, %s, %s, %s, %s,%s)',
                       (lat, lng, 1, speciality, baladia,patient_id, formatted_time,formatted_time))
-        c.execute('INSERT INTO groups_number (group_id, patients_number,created_at,updated_at) VALUES (%s,%s, %s, %s)',
+        c.execute('INSERT INTO groups_numbers (group_id, patients_number,created_at,updated_at) VALUES (%s,%s, %s, %s)',
                       ( 1, 1, formatted_time,formatted_time))
         group_id = 1
         c.execute("SELECT group_id FROM patients WHERE id = %s", (patient_id,))
@@ -75,7 +75,7 @@ def assign_group(lat, lng, speciality, baladia,patient_id):
             max_group_id = max(patient[2] for patient in existing_patients)
             c.execute('INSERT INTO groups (latitude, longitude, group_id, speciality, baladia,patient_id, created_at,updated_at) VALUES (%s,%s, %s, %s, %s, %s, %s, %s)',
                       (lat, lng, max_group_id + 1, speciality, baladia,patient_id, formatted_time,formatted_time))
-            c.execute('INSERT INTO groups_number (group_id, patients_number,created_at,updated_at) VALUES (%s,%s, %s, %s)',
+            c.execute('INSERT INTO groups_numbers (group_id, patients_number,created_at,updated_at) VALUES (%s,%s, %s, %s)',
                           ( max_group_id + 1, 1, formatted_time,formatted_time))
             group_id = max_group_id + 1
             c.execute("SELECT group_id FROM patients WHERE id = %s", (patient_id,))
@@ -97,7 +97,7 @@ def assign_group(lat, lng, speciality, baladia,patient_id):
                 max_group_id = max(patient[2] for patient in existing_patients)
                 c.execute('INSERT INTO groups (latitude, longitude, group_id, speciality, baladia,patient_id,created_at,updated_at) VALUES (%s,%s, %s, %s, %s, %s, %s, %s)',
                       (lat, lng, max_group_id + 1, speciality, baladia,patient_id,formatted_time,formatted_time))
-                c.execute('INSERT INTO groups_number (group_id, patients_number,created_at,updated_at) VALUES (%s,%s, %s, %s)',
+                c.execute('INSERT INTO groups_numbers (group_id, patients_number,created_at,updated_at) VALUES (%s,%s, %s, %s)',
                           ( max_group_id + 1, 1, formatted_time,formatted_time))
 
                 group_id = max_group_id + 1
@@ -118,7 +118,7 @@ def assign_group(lat, lng, speciality, baladia,patient_id):
 
                 c.execute('INSERT INTO groups (latitude, longitude, group_id, speciality, baladia,patient_id,created_at,updated_at) VALUES (%s,%s, %s, %s, %s, %s, %s, %s)',
                       (lat, lng, group_id, speciality, baladia,patient_id,formatted_time,formatted_time))
-                c.execute('UPDATE groups_number SET patients_number = patients_number + 1 WHERE group_id = %s', (group_id,))
+                c.execute('UPDATE groups_numbers SET patients_number = patients_number + 1 WHERE group_id = %s', (group_id,))
                 c.execute("SELECT group_id FROM patients WHERE id = %s", (patient_id,))
                 result = c.fetchone()
                 if result:
